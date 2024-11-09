@@ -18,6 +18,9 @@ namespace Gameplay
 			void update();
 			void render();
 
+			float getCellWidth();
+			float getCellHeight();
+
 			void reset();
 
 

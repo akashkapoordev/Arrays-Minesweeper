@@ -1,6 +1,7 @@
 #include "../../header/Gameplay/Cell/CellController.h"
 #include "../../header/Gameplay/Cell/CellView.h"
 #include "../../header/Gameplay/Cell/CellModel.h"
+#include "../../header/Global/ServiceLocator.h"
 
 namespace Gameplay
 {
@@ -19,10 +20,10 @@ namespace Gameplay
 			delete(cell_view);
 		}
 
-		void CellController::initialize()
+		void CellController::initialize(float cell_width,float cell_height)
 		{
 
-			cell_view->initialize();
+			cell_view->initialize(cell_width,cell_height);
 		}
 
 		void CellController::update()

@@ -22,7 +22,7 @@ namespace Gameplay
 		void BoardController::initialize()
 		{
 			board_view->initialize();
-			cell_controller->initialize();
+			cell_controller->initialize(getCellWidth(),getCellHeight());
 		}
 
 		void BoardController::update()
@@ -35,6 +35,16 @@ namespace Gameplay
 		{
 			board_view->render();
 			cell_controller->render();
+		}
+
+		float BoardController::getCellWidth()
+		{
+			return board_view->getCellWidth();
+		}
+
+		float BoardController::getCellHeight()
+		{
+			return board_view->getCellHeight();
 		}
 
 		void BoardController::createBoard()

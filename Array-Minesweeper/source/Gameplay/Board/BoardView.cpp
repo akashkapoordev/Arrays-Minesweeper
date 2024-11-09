@@ -38,6 +38,16 @@ namespace Gameplay
 			board_image->render();
 		}
 
+		float BoardView::getCellWidth()
+		{
+			return (board_width - board_width_offset) / board_controller->number_of_columns;
+		}
+
+		float BoardView::getCellHeight()
+		{
+			return (board_height - board_height_offset) / board_controller->number_of_rows;
+		}
+
 		void BoardView::createBackgroundImage()
 		{
 			backround_image = new ImageView();
