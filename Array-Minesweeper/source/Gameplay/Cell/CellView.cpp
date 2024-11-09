@@ -1,6 +1,7 @@
 #include "../../header/Gameplay/Cell/CellView.h"
 #include "../../header/Global/Config.h"
 #include "../../header/Global/ServiceLocator.h"
+#include "../../header/Gameplay/Cell/CellModel.h"
 
 
 namespace Gameplay
@@ -23,7 +24,7 @@ namespace Gameplay
 
 		void CellView::initialize()
 		{
-			intializeButtonView(tile_size,tile_size);
+			intializeButtonView(tile_size*12,tile_size);
 
 		}
 
@@ -54,12 +55,32 @@ namespace Gameplay
 
 		void CellView::renderButtonView()
 		{
+			setCellTetxure();
 			m_button_view->render();
 		}
 
 		void CellView::destroyButtonView()
 		{
 			delete(m_button_view);
+		}
+		void CellView::setCellTetxure()
+		{
+			int index = static_cast<int>(m_controller->getCellValue());
+
+			switch (m_controller->getCellState())
+			{
+			case Gameplay::Cell::CellState::HIDDEN:
+				m_button_view->setTextureRect(sf::IntRect(10 * tile_size, 0, tile_size, tile_size));
+				break;
+			case Gameplay::Cell::CellState::OPEN:
+				m_button_view->setTextureRect(sf::IntRect(index * tile_size, 0, tile_size, tile_size));
+				break;
+			case Gameplay::Cell::CellState::FLAGGED:
+				m_button_view->setTextureRect(sf::IntRect(11 * tile_size, 0, tile_size, tile_size));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 

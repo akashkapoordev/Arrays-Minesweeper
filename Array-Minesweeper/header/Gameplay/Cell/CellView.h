@@ -11,6 +11,7 @@ namespace Gameplay
 		public:
 
 			const int tile_size = 32;
+			int slice_count = 12;
 
 			CellView(CellController* controller);
 			~CellView();
@@ -28,6 +29,8 @@ namespace Gameplay
 			void updateButtonView();
 			void renderButtonView();
 			void destroyButtonView();
+
+			void setCellTetxure();
 		};
 
 	}

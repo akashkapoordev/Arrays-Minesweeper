@@ -1,5 +1,6 @@
 #include "../../header/Gameplay/Board/BoardController.h"
 #include "../../header/Gameplay/Board/BoardView.h"
+#include "../../header/Gameplay/Cell/CellController.h"
 
 namespace Gameplay
 {
@@ -50,6 +51,7 @@ namespace Gameplay
 
 		void BoardController::reset()
 		{
+			cell_controller->resetCell();
 		}
 	}
 }
