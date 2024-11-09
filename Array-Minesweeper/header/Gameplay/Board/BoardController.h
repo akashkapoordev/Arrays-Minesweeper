@@ -1,4 +1,5 @@
 #pragma once
+#include "../../header/Gameplay/Cell/CellController.h"
 namespace Gameplay
 {
 	namespace Board
@@ -22,6 +23,7 @@ namespace Gameplay
 
 		private:
 			BoardView* board_view;
+			Cell::CellController* cell_controller;
 
 			void createBoard();
 			void deleteBoard();
