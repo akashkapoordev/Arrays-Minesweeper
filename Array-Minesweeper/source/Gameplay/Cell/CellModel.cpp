@@ -5,25 +5,10 @@ namespace Gameplay
 {
 	namespace Cell
 	{
-		std::ostream& operator<<(std::ostream& os, const CellState& state)
-		{
-			switch (state)
-			{
-			case CellState::HIDDEN:
-				os << "HIDDEN";
-				break;
-			case CellState::OPEN:
-				os << "OPEN";
-				break;
-			case CellState::FLAGGED:
-				os << "FLAGGED";
-				break;
-			}
-			return os;
-		}
 
-		CellModel::CellModel()
+		CellModel::CellModel(int cell_index)
 		{
+			//this->cell_index = cell_index;
 		}
 
 		CellModel::~CellModel()
@@ -47,7 +32,6 @@ namespace Gameplay
 
 		CellState CellModel::getCellState()
 		{
-			std::cout << "Cell State: " << cell_state << std::endl;
 			return cell_state;
 		}
 
@@ -70,6 +54,10 @@ namespace Gameplay
 		{
 			cell_state = CellState::HIDDEN;
 			cell_value = CellValue::EMPTY;
+		}
+		int CellModel::getCellIndex()
+		{
+			return cell_index;
 		}
 	}
 }

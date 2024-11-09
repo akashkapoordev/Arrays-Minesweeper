@@ -38,9 +38,11 @@ namespace Gameplay
 			renderButtonView();
 		}
 
-		sf::Vector2f CellView::getCellScreenPosition()
+		sf::Vector2f CellView::getCellScreenPosition(float width,float height)
 		{
-			return sf::Vector2f(cell_left_offset,cell_top_offset);
+			float x_position = cell_left_offset + (m_controller->getCellIndex() * width);
+			float y_position = height;
+			return sf::Vector2f(x_position,y_position);
 		}
 
 		void CellView::createButtonView()
@@ -50,7 +52,7 @@ namespace Gameplay
 
 		void CellView::intializeButtonView(float width,float height)
 		{
-			m_button_view->initialize("Cell",Config::cells_texture_path, width * slice_count, height, getCellScreenPosition());
+			m_button_view->initialize("Cell",Config::cells_texture_path, width * slice_count, height, getCellScreenPosition(width,height));
 		}
 
 		void CellView::updateButtonView()

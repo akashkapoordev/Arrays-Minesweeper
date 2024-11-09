@@ -10,7 +10,7 @@ namespace Gameplay
 		class CellController
 		{
 		public:
-			CellController();
+			CellController(int cell_index);
 			~CellController();
 
 			void initialize(float cell_width, float cell_height);
@@ -24,6 +24,8 @@ namespace Gameplay
 			void setCellValue(CellValue value);
 
 			void resetCell();
+
+			int getCellIndex();
 
 		private:
 			CellView* cell_view;
