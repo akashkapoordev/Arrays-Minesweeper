@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 namespace Gameplay
 {
 	namespace Cell
@@ -10,7 +11,7 @@ namespace Gameplay
 		class CellController
 		{
 		public:
-			CellController(int cell_index);
+			CellController(sf::Vector2i position);
 			~CellController();
 
 			void initialize(float cell_width, float cell_height);
@@ -25,7 +26,7 @@ namespace Gameplay
 
 			void resetCell();
 
-			int getCellIndex();
+			sf::Vector2i getCellIndex();
 
 		private:
 			CellView* cell_view;

@@ -6,9 +6,9 @@ namespace Gameplay
 	namespace Cell
 	{
 
-		CellModel::CellModel(int cell_index)
+		CellModel::CellModel(sf::Vector2i position)
 		{
-			this->cell_index = cell_index;
+			this->cell_position = position;
 		}
 
 		CellModel::~CellModel()
@@ -55,9 +55,9 @@ namespace Gameplay
 			cell_state = CellState::HIDDEN;
 			cell_value = CellValue::EMPTY;
 		}
-		int CellModel::getCellIndex()
+		sf::Vector2i CellModel::getCellIndex()
 		{
-			return cell_index;
+			return cell_position;
 		}
 	}
 }
