@@ -12,7 +12,6 @@ namespace Gameplay
 			static const int number_of_columns = 9;
 			static const int mines_count = 8;
 
-			Cell::CellController* cells[number_of_columns];
 
 			BoardController();
 			~BoardController();
@@ -21,15 +20,12 @@ namespace Gameplay
 			void update();
 			void render();
 
-			float getCellWidth();
-			float getCellHeight();
-
 			void reset();
 
 
 		private:
 			BoardView* board_view;
-			//Cell::CellController* cell_controller;
+			Cell::CellController* cells[number_of_columns];
 
 			void createBoard();
 			void deleteBoard();

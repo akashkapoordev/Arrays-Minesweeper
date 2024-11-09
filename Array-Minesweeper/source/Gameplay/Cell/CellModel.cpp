@@ -8,7 +8,7 @@ namespace Gameplay
 
 		CellModel::CellModel(int cell_index)
 		{
-			//this->cell_index = cell_index;
+			this->cell_index = cell_index;
 		}
 
 		CellModel::~CellModel()

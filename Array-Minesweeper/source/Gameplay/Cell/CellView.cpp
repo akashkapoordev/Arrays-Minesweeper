@@ -2,6 +2,7 @@
 #include "../../header/Global/Config.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Gameplay/Cell/CellModel.h"
+#include <iostream>
 
 
 namespace Gameplay
@@ -40,8 +41,9 @@ namespace Gameplay
 
 		sf::Vector2f CellView::getCellScreenPosition(float width,float height)
 		{
+			std::cout << "Cell getCellIndex: " << m_controller->getCellIndex() << std::endl;
 			float x_position = cell_left_offset + (m_controller->getCellIndex() * width);
-			float y_position = height;
+			float y_position = cell_left_offset;
 			return sf::Vector2f(x_position,y_position);
 		}
 

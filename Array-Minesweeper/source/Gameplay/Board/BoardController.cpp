@@ -6,6 +6,7 @@ namespace Gameplay
 	namespace Board
 	{
 		using namespace Cell;
+
 		BoardController::BoardController()
 		{
 			board_view = new BoardView(this);
@@ -19,10 +20,13 @@ namespace Gameplay
 
 		void BoardController::initialize()
 		{
+		
 			board_view->initialize();
+			float cell_width = board_view->getCellWidth();
+			float cell_height = board_view->getCellHeight();
 			for (int i = 0; i < number_of_columns; i++)
 			{
-				cells[i]->initialize(getCellWidth(), getCellHeight());
+				cells[i]->initialize(cell_width, cell_height);
 
 			}
 		}
@@ -45,16 +49,6 @@ namespace Gameplay
 				cells[i]->render();
 
 			}
-		}
-
-		float BoardController::getCellWidth()
-		{
-			return board_view->getCellWidth();
-		}
-
-		float BoardController::getCellHeight()
-		{
-			return board_view->getCellHeight();
 		}
 
 		void BoardController::createBoard()
