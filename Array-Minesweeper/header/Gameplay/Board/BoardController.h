@@ -3,6 +3,7 @@ namespace Gameplay
 {
 	namespace Board
 	{
+		class BoardView;
 		class BoardController
 		{
 		public:
@@ -20,6 +21,8 @@ namespace Gameplay
 
 
 		private:
+			BoardView* board_view;
+
 			void createBoard();
 			void deleteBoard();
 			void destroy();
