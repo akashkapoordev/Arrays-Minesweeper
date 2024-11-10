@@ -16,6 +16,7 @@ namespace Gameplay
 
 		void reset();
 		float getRemainingTimer();
+		int getMintCount();
 
 
 	private:

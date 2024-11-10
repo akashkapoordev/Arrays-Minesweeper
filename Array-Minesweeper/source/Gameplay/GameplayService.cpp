@@ -37,6 +37,11 @@ namespace Gameplay
 		return gameplay_controller->getRemainingTimer();
 	}
 
+	float GameplayService::getMintCount()
+	{
+		return gameplay_controller->getMintCount();
+	}
+
 
 
 }

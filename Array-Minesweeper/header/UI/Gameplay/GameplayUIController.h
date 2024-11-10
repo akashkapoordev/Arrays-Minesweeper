@@ -15,6 +15,9 @@ namespace UI
 
 			const float time_text_top_offset = 65.f;
 			const float time_text_left_offset = 1090.f;
+
+			const float mine_text_top_offset = 65.f;
+			const float mine_text_left_offset = 660.f;
 			GameplayUIController();
 			~GameplayUIController();
 
@@ -25,7 +28,7 @@ namespace UI
 
 		private:
 			UI::UIElement::TextView* time_text;
-			UI::UIElement::TextView* flag_counter_text;
+			UI::UIElement::TextView* mint_text;
 			UI::UIElement::TextView* game_over_text;
 			UI::UIElement::ButtonView* reset_button;
 
@@ -34,6 +37,7 @@ namespace UI
 			void initializeTextViews();
 			void initializeButtons();
 			void updateTimeText();
+			void updateMineText();
 
 		};
 	}

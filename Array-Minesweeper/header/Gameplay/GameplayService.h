@@ -15,6 +15,7 @@ namespace Gameplay
 
 		void startGame();
 		float getRemainingTimer();
+		float getMintCount();
 
 	private:
 		GameplayController* gameplay_controller;
