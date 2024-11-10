@@ -26,7 +26,7 @@ namespace Gameplay
 
 		private:
 			CellController* m_controller;
-			UI::UIElement::ButtonView* m_button_view;
+			UI::UIElement::ButtonView* cell_view;
 
 			void createButtonView();
 			void intializeButtonView(float width,float height);
@@ -35,6 +35,8 @@ namespace Gameplay
 			void destroyButtonView();
 
 			void setCellTetxure();
+			void registerButtonCallback();
+			void cellButtonCallback(UI::UIElement::ButtonType button);
 		};
 
 	}

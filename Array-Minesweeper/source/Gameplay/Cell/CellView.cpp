@@ -2,6 +2,7 @@
 #include "../../header/Global/Config.h"
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Gameplay/Cell/CellModel.h"
+#include "../../header/Sound/SoundService.h"
 #include <iostream>
 
 
@@ -11,6 +12,7 @@ namespace Gameplay
 	{
 		using namespace UI::UIElement;
 		using namespace Global;
+		using namespace Sound;
 
 		CellView::CellView(CellController* controller)
 		{
@@ -26,6 +28,7 @@ namespace Gameplay
 		void CellView::initialize(float width,float height)
 		{
 			intializeButtonView(width,height);
+			registerButtonCallback();
 
 		}
 
@@ -50,28 +53,28 @@ namespace Gameplay
 
 		void CellView::createButtonView()
 		{
-			m_button_view = new ButtonView();
+			cell_view = new ButtonView();
 		}
 
 		void CellView::intializeButtonView(float width,float height)
 		{
-			m_button_view->initialize("Cell",Config::cells_texture_path, width * slice_count, height, getCellScreenPosition(width,height));
+			cell_view->initialize("Cell",Config::cells_texture_path, width * slice_count, height, getCellScreenPosition(width,height));
 		}
 
 		void CellView::updateButtonView()
 		{
-			m_button_view->update();
+			cell_view->update();
 		}
 
 		void CellView::renderButtonView()
 		{
 			setCellTetxure();
-			m_button_view->render();
+			cell_view->render();
 		}
 
 		void CellView::destroyButtonView()
 		{
-			delete(m_button_view);
+			delete(cell_view);
 		}
 		void CellView::setCellTetxure()
 		{
@@ -80,13 +83,31 @@ namespace Gameplay
 			switch (m_controller->getCellState())
 			{
 			case Gameplay::Cell::CellState::HIDDEN:
-				m_button_view->setTextureRect(sf::IntRect(10 * tile_size, 0, tile_size, tile_size));
+				cell_view->setTextureRect(sf::IntRect(10 * tile_size, 0, tile_size, tile_size));
 				break;
 			case Gameplay::Cell::CellState::OPEN:
-				m_button_view->setTextureRect(sf::IntRect(index * tile_size, 0, tile_size, tile_size));
+				cell_view->setTextureRect(sf::IntRect(index * tile_size, 0, tile_size, tile_size));
 				break;
 			case Gameplay::Cell::CellState::FLAGGED:
-				m_button_view->setTextureRect(sf::IntRect(11 * tile_size, 0, tile_size, tile_size));
+				cell_view->setTextureRect(sf::IntRect(11 * tile_size, 0, tile_size, tile_size));
+				break;
+			default:
+				break;
+			}
+		}
+		void CellView::registerButtonCallback()
+		{
+			cell_view->registerCallbackFuntion(std::bind(&CellView::cellButtonCallback, this, std::placeholders::_1));
+		}
+		void CellView::cellButtonCallback(ButtonType button)
+		{
+			switch (button)
+			{
+			case UI::UIElement::ButtonType::LEFT_MOUSE_BUTTON:
+				m_controller->openCell();
+				break;
+			case UI::UIElement::ButtonType::RIGHT_MOUSE_BUTTON:
+				m_controller->flagCell();
 				break;
 			default:
 				break;
