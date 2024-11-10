@@ -89,6 +89,7 @@ namespace Gameplay
 				cell_view->setTextureRect(sf::IntRect(index * tile_size, 0, tile_size, tile_size));
 				break;
 			case Gameplay::Cell::CellState::FLAGGED:
+				std::cout << "flagged" << std::endl;
 				cell_view->setTextureRect(sf::IntRect(11 * tile_size, 0, tile_size, tile_size));
 				break;
 			default:
@@ -107,6 +108,7 @@ namespace Gameplay
 				m_controller->openCell();
 				break;
 			case UI::UIElement::ButtonType::RIGHT_MOUSE_BUTTON:
+				std::cout << "Right Mouse Button Clicked\n";
 				m_controller->flagCell();
 				break;
 			default:

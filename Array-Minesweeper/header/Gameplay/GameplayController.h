@@ -4,6 +4,9 @@ namespace Gameplay
 	class GameplayController
 	{
 	public:
+
+		float max_timer;
+		float remaining_timer;
 		GameplayController();
 		~GameplayController();
 
@@ -12,9 +15,11 @@ namespace Gameplay
 		void render();
 
 		void reset();
+		float getRemainingTimer();
+
 
 	private:
-
+		void updateRemainingTimer();
 	};
 
 

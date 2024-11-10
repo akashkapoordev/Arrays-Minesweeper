@@ -32,6 +32,11 @@ namespace Gameplay
 		gameplay_controller->reset();
 	}
 
+	float GameplayService::getRemainingTimer()
+	{
+		return gameplay_controller->getRemainingTimer();
+	}
+
 
 
 }

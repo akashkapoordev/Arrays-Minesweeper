@@ -20,6 +20,7 @@ namespace Gameplay
 
 	void GameplayController::update()
 	{
+		updateRemainingTimer();
 
 	}
 
@@ -30,6 +31,15 @@ namespace Gameplay
 
 	void GameplayController::reset()
 	{
+		remaining_timer = max_timer;
 		ServiceLocator::getInstance()->getBoardService()->resetBoard();
+	}
+	float GameplayController::getRemainingTimer()
+	{
+		return remaining_timer;
+	}
+	void GameplayController::updateRemainingTimer()
+	{
+		remaining_timer -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 	}
 }

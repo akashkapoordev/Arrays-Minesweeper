@@ -8,22 +8,6 @@ namespace Gameplay
 {
 	namespace Cell
 	{
-		inline std::ostream& operator<<(std::ostream& os, const CellState& state)
-		{
-			switch (state)
-			{
-			case CellState::HIDDEN:
-				os << "HIDDEN";
-				break;
-			case CellState::OPEN:
-				os << "OPEN";
-				break;
-			case CellState::FLAGGED:
-				os << "FLAGGED";
-				break;
-			}
-			return os;
-		}
 		using namespace Global;
 		CellController::CellController(sf::Vector2i position)
 		{
@@ -91,7 +75,6 @@ namespace Gameplay
 		}
 		void CellController::flagCell()
 		{
-			std::cout << cell_model->getCellState() << std::endl;
 
           
 			switch (cell_model->getCellState())
@@ -103,8 +86,9 @@ namespace Gameplay
 				cell_model->setCellState(CellState::FLAGGED);
 				break;
 
-				ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
 			}
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+
 		}
 	}
 
