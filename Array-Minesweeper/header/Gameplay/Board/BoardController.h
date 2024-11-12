@@ -1,5 +1,6 @@
 #pragma once
 #include "../../header/Gameplay/Cell/CellController.h"
+#include "../../UI/UIElement/ButtonView.h"
 namespace Gameplay
 {
 	namespace Board
@@ -11,6 +12,7 @@ namespace Gameplay
 			static const int number_of_rows = 9;
 			static const int number_of_columns = 9;
 			static const int mines_count = 8;
+			int flagged_count;
 
 
 			BoardController();
@@ -22,6 +24,10 @@ namespace Gameplay
 
 			void reset();
 			int getMinesCount();
+
+			void openCell(sf::Vector2i position);
+			void processCellInput(Cell::CellController* cell_controller,UI::UIElement::ButtonType buttonType);
+			void flagCell(sf::Vector2i position);
 
 		private:
 			BoardView* board_view;

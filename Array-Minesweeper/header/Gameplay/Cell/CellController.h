@@ -29,6 +29,7 @@ namespace Gameplay
 			sf::Vector2i getCellIndex();
 			void openCell();
 			void flagCell();
+			bool isCellOpen();
 
 		private:
 			CellView* cell_view;
