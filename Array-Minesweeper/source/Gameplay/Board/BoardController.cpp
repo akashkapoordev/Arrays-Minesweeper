@@ -1,12 +1,14 @@
 #include "../../header/Gameplay/Board/BoardController.h"
 #include "../../header/Gameplay/Board/BoardView.h"
 #include "../../header/Gameplay/Cell/CellModel.h"
+#include "../../header/Global/ServiceLocator.h"
 
 namespace Gameplay
 {
 	namespace Board
 	{
 		using namespace Cell;
+		using namespace Global;
 
 		BoardController::BoardController():random_engine(random_device())
 		{
@@ -119,6 +121,7 @@ namespace Gameplay
 					populateBoard(position);
 					board_state = BoardState::PLAYING;
 				}
+				processCellValues(position);
 				board[position.x][position.y]->openCell();
 			}
 		}
@@ -240,6 +243,18 @@ namespace Gameplay
 					board[i][j]->openCell();
 				}
 			}
+		}
+		void BoardController::processCellValues(sf::Vector2i position)
+		{
+			switch (board[position.x][position.y]->getCellValue())
+			{
+			case Cell::CellValue::EIGHT:
+				break;
+			case Cell::CellValue::MINE:
+				break;
+			
+			}
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
 		}
 	}
 		
