@@ -189,16 +189,21 @@ namespace Gameplay
 			{
 				for (int j = -1; j < 2; j++)
 				{
-					if ((i == 0 && j == 0) || (!isValidCellPosition(sf::Vector2i(position.x + i, position.y + j)))) continue;
 
-					if (board[i + position.x][j + position.y]->getCellValue() == CellValue::MINE)
+					if ((i == 0 && j == 0) || (!isValidCellPosition(sf::Vector2i(position.x + i, position.y + j))))
+						continue;
+
+					if (board[position.x + i][position.y + j]->getCellValue() == CellValue::MINE)
 					{
 						mine_count++;
 					}
 				}
-				return mines_count;
 			}
+
+			// Return the total count of mines around the cell
+			return mine_count;
 		}
+
 		bool BoardController::isValidCellPosition(sf::Vector2i position)
 		{
 			return position.x >= 0 && position.y >= 0 && position.x < number_of_columns && position.y < number_of_rows;
@@ -219,6 +224,20 @@ namespace Gameplay
 						CellValue value = static_cast<CellValue>(countMinesAround(sf::Vector2i(i, j)));
 						board[i][j]->setCellValue(value);
 					}
+				}
+			}
+		}
+		void BoardController::openAllCells()
+		{
+			if (board_state == BoardState::FIRST_CELL)
+			{
+				populateBoard(sf::Vector2i(0, 0));
+			}
+			for (int i = 0; i < number_of_rows; i++)
+			{
+				for (int j = 0; j < number_of_columns; j++)
+				{
+					board[i][j]->openCell();
 				}
 			}
 		}

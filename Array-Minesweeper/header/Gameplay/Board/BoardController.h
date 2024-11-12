@@ -47,6 +47,7 @@ namespace Gameplay
 			bool isValidCellPosition(sf::Vector2i position);
 			void populateBoard(sf::Vector2i postion);
 			void populateCells();
+			void openAllCells();
 
 		private:
 			BoardView* board_view;
