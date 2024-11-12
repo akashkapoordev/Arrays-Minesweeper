@@ -248,13 +248,44 @@ namespace Gameplay
 		{
 			switch (board[position.x][position.y]->getCellValue())
 			{
-			case Cell::CellValue::EIGHT:
+			case Cell::CellValue::EMPTY:
+				processEmptyCell(position);
 				break;
 			case Cell::CellValue::MINE:
 				break;
 			
 			}
 			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+		}
+		void BoardController::openEmptyCells(sf::Vector2i position)
+		{
+			switch (board[position.x][position.y]->getCellState())
+			{
+			case CellState::OPEN:
+				return;
+			case CellState::FLAGGED:
+					flagged_count--;
+
+			default:
+				board[position.x][position.y]->openCell();
+				
+				for(int a = 0;a<2;a++)
+				{
+					for (int b = 0; b < 2; b++)
+					{
+						if (a == 0 && b == 0 && isValidCellPosition(sf::Vector2i(position.x + a, position.y + b)))
+							continue;
+
+						sf::Vector2i nextCellPosition = sf::Vector2i(position.x + a, position.y + b);
+
+						openCell(nextCellPosition);
+					}
+				}
+			}
+		}
+		void BoardController::processEmptyCell(sf::Vector2i position)
+		{
+			openEmptyCells(position);
 		}
 	}
 		

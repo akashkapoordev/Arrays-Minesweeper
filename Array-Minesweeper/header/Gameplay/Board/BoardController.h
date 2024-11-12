@@ -49,6 +49,8 @@ namespace Gameplay
 			void populateCells();
 			void openAllCells();
 			void processCellValues(sf::Vector2i position);
+			void openEmptyCells(sf::Vector2i position);
+			void processEmptyCell(sf::Vector2i position);
 
 		private:
 			BoardView* board_view;
