@@ -11,6 +11,8 @@ namespace Gameplay
 		class CellController
 		{
 		public:
+		
+
 			CellController(sf::Vector2i position);
 			~CellController();
 
