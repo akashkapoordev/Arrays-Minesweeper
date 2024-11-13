@@ -149,8 +149,6 @@ namespace Gameplay
 			case Cell::CellState::HIDDEN:
 				flagged_count--;
 				break;
-			default:
-				break;
 			}
 
 			board[position.x][position.y]->flagCell();
@@ -253,9 +251,11 @@ namespace Gameplay
 				break;
 			case Cell::CellValue::MINE:
 				break;
-			
+			default:
+				ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+				break;
 			}
-			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+		
 		}
 		void BoardController::openEmptyCells(sf::Vector2i position)
 		{
@@ -269,17 +269,17 @@ namespace Gameplay
 			default:
 				board[position.x][position.y]->openCell();
 				
-				for(int a = 0;a<2;a++)
+		
+			}
+			for (int a = -1; a < 2; a++)
+			{
+				for (int b = -1; b < 2; b++)
 				{
-					for (int b = 0; b < 2; b++)
-					{
-						if (a == 0 && b == 0 && isValidCellPosition(sf::Vector2i(position.x + a, position.y + b)))
-							continue;
+					if ((a == 0 && b == 0) || !isValidCellPosition(sf::Vector2i(a + position.x, b + position.y)))continue;
 
-						sf::Vector2i nextCellPosition = sf::Vector2i(position.x + a, position.y + b);
+					sf::Vector2i nextCellPosition = sf::Vector2i(a + position.x, b + position.y);
 
-						openCell(nextCellPosition);
-					}
+					openCell(nextCellPosition);
 				}
 			}
 		}
