@@ -147,10 +147,10 @@ namespace Gameplay
 			switch (board[position.x][position.y]->getCellState())
 			{
 			case Cell::CellState::FLAGGED:
-				flagged_count++;
+				flagged_count--;
 				break;
 			case Cell::CellState::HIDDEN:
-				flagged_count--;
+				flagged_count++;
 				break;
 			}
 
