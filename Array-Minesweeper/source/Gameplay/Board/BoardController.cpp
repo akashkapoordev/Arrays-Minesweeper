@@ -3,6 +3,7 @@
 #include "../../header/Gameplay/Cell/CellModel.h"
 #include "../../header/Global/ServiceLocator.h"
 
+
 namespace Gameplay
 {
 	namespace Board
@@ -230,10 +231,6 @@ namespace Gameplay
 		}
 		void BoardController::openAllCells()
 		{
-			if (board_state == BoardState::FIRST_CELL)
-			{
-				populateBoard(sf::Vector2i(0, 0));
-			}
 			for (int i = 0; i < number_of_rows; i++)
 			{
 				for (int j = 0; j < number_of_columns; j++)
@@ -287,6 +284,29 @@ namespace Gameplay
 		{
 			openEmptyCells(position);
 		}
+		void BoardController::processMineCell(sf::Vector2i position)
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::EXPLOSION);
+			ServiceLocator::getInstance()->getGameplayService()->endGame(Gameplay::GameResult::LOSE);
+		}
+		void BoardController::showBoard()
+		{
+			switch (getBoardState())
+			{
+			case Gameplay::Board::BoardState::FIRST_CELL:
+				populateBoard(sf::Vector2i(0, 0));
+				openAllCells();
+				break;
+			case Gameplay::Board::BoardState::PLAYING:
+				openAllCells();
+				break;
+			case Gameplay::Board::BoardState::COMPLETED:
+				break;
+			default:
+				break;
+			}
+		}
+	
 	}
 		
 }

@@ -42,6 +42,11 @@ namespace Gameplay
 		return gameplay_controller->getMintCount();
 	}
 
+	void GameplayService::endGame(GameResult result)
+	{
+		gameplay_controller->endGame(result);
+	}
+
 
 
 }

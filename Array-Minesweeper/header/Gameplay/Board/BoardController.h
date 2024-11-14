@@ -51,6 +51,10 @@ namespace Gameplay
 			void processCellValues(sf::Vector2i position);
 			void openEmptyCells(sf::Vector2i position);
 			void processEmptyCell(sf::Vector2i position);
+			void processMineCell(sf::Vector2i position);
+			void showBoard();
+			
+		
 
 		private:
 			BoardView* board_view;
