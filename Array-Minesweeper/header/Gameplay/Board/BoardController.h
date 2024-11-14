@@ -54,6 +54,8 @@ namespace Gameplay
 			void processMineCell(sf::Vector2i position);
 			void showBoard();
 			void flagAllMines();
+
+			bool flagCount();
 		
 
 		private:

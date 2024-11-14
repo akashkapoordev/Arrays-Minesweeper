@@ -11,7 +11,7 @@ namespace Gameplay
 	{
 	public:
 
-		float max_timer = 30.f;
+		float max_timer = 300.f;
 		float remaining_timer;
 		const float game_over_time = 11.f;
 		GameplayController();

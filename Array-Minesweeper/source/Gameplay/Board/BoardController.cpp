@@ -111,7 +111,11 @@ namespace Gameplay
 		}
 		int BoardController::getMinesCount()
 		{
-			return mines_count - flagged_count;
+			if (flagCount())
+			{
+				return mines_count - flagged_count;
+
+			}
 		}
 		void BoardController::openCell(sf::Vector2i position)
 		{
@@ -136,6 +140,7 @@ namespace Gameplay
 				openCell(cell_controller->getCellIndex());
 				break;
 			case UI::UIElement::ButtonType::RIGHT_MOUSE_BUTTON:
+				
 				flagCell(cell_controller->getCellIndex());
 				break;
 			default:
@@ -148,13 +153,20 @@ namespace Gameplay
 			{
 			case Cell::CellState::FLAGGED:
 				flagged_count--;
+				board[position.x][position.y]->flagCell();
+
+				
 				break;
 			case Cell::CellState::HIDDEN:
-				flagged_count++;
+				if (flagCount())
+				{
+					flagged_count++;
+					board[position.x][position.y]->flagCell();
+
+				}
 				break;
 			}
-
-			board[position.x][position.y]->flagCell();
+		
 		}
 		BoardState BoardController::getBoardState()
 		{
@@ -322,6 +334,11 @@ namespace Gameplay
 					}
 				}
 			}
+		}
+
+		bool BoardController::flagCount()
+		{
+			return flagged_count<8;
 		}
 	
 	}
