@@ -22,7 +22,8 @@ namespace Gameplay
 	void GameplayController::update()
 	{
 		updateRemainingTimer();
-
+		if(TimerIsOver())
+			endGame(GameResult::LOSE);
 	}
 
 	void GameplayController::render()
@@ -85,5 +86,9 @@ namespace Gameplay
 	void GameplayController::showCredits()
 	{
 		GameService::setGameState(GameState::CREDITS);
+	}
+	bool GameplayController::TimerIsOver()
+	{
+		return remaining_timer<=1;
 	}
 }
