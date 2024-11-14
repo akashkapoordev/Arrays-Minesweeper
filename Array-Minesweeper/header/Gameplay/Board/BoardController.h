@@ -53,7 +53,7 @@ namespace Gameplay
 			void processEmptyCell(sf::Vector2i position);
 			void processMineCell(sf::Vector2i position);
 			void showBoard();
-			
+			void flagAllMines();
 		
 
 		private:

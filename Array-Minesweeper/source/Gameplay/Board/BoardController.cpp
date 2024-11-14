@@ -128,6 +128,8 @@ namespace Gameplay
 		}
 		void BoardController::processCellInput(Cell::CellController* cell_controller, UI::UIElement::ButtonType buttonType)
 		{
+			if (board_state == BoardState::COMPLETED)
+				return;
 			switch (buttonType)
 			{
 			case UI::UIElement::ButtonType::LEFT_MOUSE_BUTTON:
@@ -247,6 +249,7 @@ namespace Gameplay
 				processEmptyCell(position);
 				break;
 			case Cell::CellValue::MINE:
+				processMineCell(position);
 				break;
 			default:
 				ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
@@ -304,6 +307,20 @@ namespace Gameplay
 				break;
 			default:
 				break;
+			}
+		}
+
+		void BoardController::flagAllMines()
+		{
+			for (int i = 0; i < number_of_rows; i++)
+			{
+				for (int j = 0; j < number_of_columns; j++)
+				{
+					if (board[i][j]->getCellValue() == CellValue::MINE && board[i][j]->getCellState() != CellState::FLAGGED)
+					{
+						flagCell(sf::Vector2i(i, j));
+					}
+				}
 			}
 		}
 	

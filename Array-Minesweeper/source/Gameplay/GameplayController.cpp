@@ -33,6 +33,7 @@ namespace Gameplay
 
 	void GameplayController::reset()
 	{
+		game_result = GameResult::NONE;
 		remaining_timer = max_timer;
 		ServiceLocator::getInstance()->getBoardService()->resetBoard();
 	}
@@ -54,8 +55,6 @@ namespace Gameplay
 		case Gameplay::GameResult::LOSE:
 			loseGame();
 			break;
-		default:
-			break;
 		}
 	}
 	void GameplayController::beginGameOverTimer()
@@ -64,6 +63,11 @@ namespace Gameplay
 	}
 	void GameplayController::winGame()
 	{
+		game_result = GameResult::WIN;
+		ServiceLocator::getInstance()->getBoardService()->flagAllMines();
+		ServiceLocator::getInstance()->getBoardService()->setBoardState(Board::BoardState::COMPLETED);
+		ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::GAME_WON);
+		
 	}
 	void GameplayController::loseGame()
 	{
@@ -81,6 +85,8 @@ namespace Gameplay
 	}
 	void GameplayController::updateRemainingTimer()
 	{
+		if (game_result == GameResult::WIN)
+			return;
 		remaining_timer -= ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
 	}
 	void GameplayController::showCredits()
