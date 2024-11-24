@@ -142,7 +142,11 @@
     <ClCompile Include="source\Gameplay\Cell\CellView.cpp" />
     <ClCompile Include="source\Gameplay\GameplayController.cpp" />
     <ClCompile Include="source\Time\TimeService.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="source\UI\Credits\CreditsScreenUIController.cpp" />
+=======
+    <ClCompile Include="source\UI\CustomGridUI\CustomUIGridController.cpp" />
+>>>>>>> Stashed changes
     <ClCompile Include="source\UI\Gameplay\GameplayUIController.cpp" />
     <ClCompile Include="source\Gameplay\GameplayService.cpp" />
     <ClCompile Include="source\Event\EventService.cpp" />
@@ -157,6 +161,7 @@
     <ClCompile Include="source\UI\UIElement\AnimatedImageView.cpp" />
     <ClCompile Include="source\UI\UIElement\ButtonView.cpp" />
     <ClCompile Include="source\UI\UIElement\ImageView.cpp" />
+    <ClCompile Include="source\UI\UIElement\TextBox.cpp" />
     <ClCompile Include="source\UI\UIElement\TextView.cpp" />
     <ClCompile Include="source\UI\UIElement\UIView.cpp" />
     <ClCompile Include="source\UI\UIService.cpp" />
@@ -171,6 +176,7 @@
     <ClInclude Include="header\Gameplay\GameplayController.h" />
     <ClInclude Include="header\Time\TimeService.h" />
     <ClInclude Include="header\UI\Credits\CreditsScreenUIController.h" />
+    <ClInclude Include="header\UI\CustomUIGrid\CustomGridController.h" />
     <ClInclude Include="header\UI\Gameplay\GameplayUIController.h" />
     <ClInclude Include="header\Gameplay\GameplayService.h" />
     <ClInclude Include="header\Event\EventService.h" />
@@ -186,6 +192,7 @@
     <ClInclude Include="header\UI\UIElement\AnimatedImageView.h" />
     <ClInclude Include="header\UI\UIElement\ButtonView.h" />
     <ClInclude Include="header\UI\UIElement\ImageView.h" />
+    <ClInclude Include="header\UI\UIElement\TextBox.h" />
     <ClInclude Include="header\UI\UIElement\TextView.h" />
     <ClInclude Include="header\UI\UIElement\UIView.h" />
     <ClInclude Include="header\UI\UIService.h" />

@@ -9,6 +9,11 @@ namespace Main
 		BOOT,
 		SPLASH_SCREEN,
 		MAIN_MENU,
+<<<<<<< Updated upstream
+=======
+		CUSTOMGRID,
+		GAMEPLAY,
+>>>>>>> Stashed changes
 		INSTRUCTIONS,
 		GAMEPLAY,
 		CREDITS,
