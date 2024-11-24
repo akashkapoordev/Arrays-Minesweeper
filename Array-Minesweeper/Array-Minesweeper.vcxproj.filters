@@ -93,12 +93,6 @@
     <ClCompile Include="source\UI\Instructions\InstructionsScreenUIController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\UI\CustomGridUI\CustomUIGridController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\UI\UIElement\TextBox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\Global\ServiceLocator.h">
@@ -177,12 +171,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\UI\Instructions\InstructionsScreenUIController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="header\UI\CustomUIGrid\CustomGridController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="header\UI\UIElement\TextBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
